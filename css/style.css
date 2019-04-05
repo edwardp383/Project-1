@@ -1,0 +1,31 @@
+button{
+	width: 100px;
+	height: 40px
+}
+.floor{
+	width: 10px;
+	height: 10px;
+	background-color: rgb(200,200,200);
+}
+.wall{
+	width: 10px;
+	height: 10px;
+	background-color: rgb(118, 57, 49);
+}
+#game{
+	margin: 0 auto;
+	height:580px;
+	width: 520px;
+	background-color: blue;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+
+}
+#lvl{
+	margin: 0 auto;
+	width: 500px;
+	height: 500px;
+	background-color: white;
+}
