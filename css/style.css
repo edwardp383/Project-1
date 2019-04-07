@@ -22,9 +22,16 @@ button{
 	height:10px;
 	background-color: rgba(150, 150, 255, .5);
 }
+.character{
+	width:10px;
+	height:10px;
+	background-color: rgb(50, 50, 255);
+}
+
 .enemy{
 
 }
+
 #game{
 	margin: 0 auto;
 	height:580px;
@@ -36,7 +43,7 @@ button{
 	justify-content: space-around;
 
 }
-#grid{
+#lvl{
 	margin: 0 auto;
 	width: 500px;
 	height: 500px;
