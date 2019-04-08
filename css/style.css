@@ -2,6 +2,7 @@ button{
 	width: 100px;
 	height: 40px
 }
+
 .floor{
 	width: 10px;
 	height: 10px;
@@ -15,7 +16,7 @@ button{
 .pit{
 	width: 10px;
 	height: 10px;
-	background-color: black;
+	background-image: url("../images/magma.png");
 }
 .character{
 	width:10px;
