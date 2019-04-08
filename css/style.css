@@ -27,9 +27,10 @@ button{
 	height: 10px;
 	background-color: rgba(50, 255, 50, .5);
 }
-
 .enemy{
-
+	width: 10px;
+	height: 10px;
+	background-color: rgb(250, 50, 50);
 }
 
 #game{
