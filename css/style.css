@@ -22,6 +22,11 @@ button{
 	height:10px;
 	background-color: rgb(50, 50, 255);
 }
+.door{
+	width: 10px;
+	height: 10px;
+	background-color: rgba(50, 255, 50, .5);
+}
 
 .enemy{
 
@@ -31,7 +36,7 @@ button{
 	margin: 0 auto;
 	height:580px;
 	width: 520px;
-	background-color: rgb(180, 110, 88);
+	background-color: rgb(225, 170, 140);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -45,9 +50,33 @@ button{
 	background-color: white;
 	display: grid;
 	grid-template-columns: repeat(50, 1fr);
-/*	flex-direction: column;
-	justify-content: flex-start;*/
 }
-/*.row {
-	display: flex;
-}*/
+#lose{
+	margin: 0 auto;
+	width: 500px;
+	height: 400px;
+	padding-top: 100px;
+	background-color: rgb(245, 200, 160);
+	font-size: 40px;
+	text-align: center;
+}
+#win{
+	margin: 0 auto;
+	width: 500px;
+	height: 400px;
+	padding-top: 100px;
+	background-color: rgb(245, 200, 160);
+	font-size: 40px;
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
