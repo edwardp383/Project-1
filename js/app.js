@@ -31,24 +31,32 @@ const player = {
 	move() {
 		this.locate()
     	if(this.direction.up) {
-    		game.map1[player.y][player.x] = 0;
-    		player.y -= 1;
-    		game.map1[player.y][player.x] = 3;
+    		if (game.map1[player.y - 1][player.x] !== 1) {
+    			game.map1[player.y][player.x] = 0;
+    			player.y -= 1;
+    			game.map1[player.y][player.x] = 3;
+    		}
     	}
     	if(this.direction.left) {
-    		game.map1[player.y][player.x] = 0;
-    		this.x -= 1;
-    		game.map1[player.y][player.x] = 3
+    		if (game.map1[player.y][player.x - 1] !== 1) {
+    			game.map1[player.y][player.x] = 0;
+    			this.x -= 1;
+    			game.map1[player.y][player.x] = 3
+    		}
     	}
     	if(this.direction.right) {
-    		game.map1[player.y][player.x] = 0;
-    		this.x += 1;
-    		game.map1[player.y][player.x] = 3
+    		if (game.map1[player.y][player.x + 1] !== 1) {
+    			game.map1[player.y][player.x] = 0;
+    			this.x += 1;
+    			game.map1[player.y][player.x] = 3
+    		}
     	}
     	if(this.direction.down) {
-    		game.map1[player.y][player.x] = 0;
-    		this.y += 1;
-    		game.map1[player.y][player.x] = 3
+    		if (game.map1[player.y + 1][player.x] !== 1) {
+    			game.map1[player.y][player.x] = 0;
+    			this.y += 1;
+    			game.map1[player.y][player.x] = 3
+    		}
     	}
   	},
   	setDirection(key) {
