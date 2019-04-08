@@ -9,16 +9,77 @@ console.log("hi");
 //6 = enemy2
 //7 = key
 
-class Player{
+const player = {
+	x: undefined,
+	y: undefined,
+	direction: {
+    	up: false,
+    	down: false,
+    	left: false,
+    	right: false
+    },
+	locate(){
+		for (let i = 0; i < game.map1.length; i++) {
+			for (let j = 0; j < game.map1[i].length; j++) {
+				if (game.map1[i][j] === 3) {
+					player.x = j;
+					player.y = i;
+				}
+			}
+		}
+	},
+	move() {
+		this.locate()
+    	if(this.direction.up) {
+    		game.map1[player.y][player.x] = 0;
+    		player.y -= 1;
+    		game.map1[player.y][player.x] = 3;
+    	}
+    	if(this.direction.left) {
+    		game.map1[player.y][player.x] = 0;
+    		this.x -= 1;
+    		game.map1[player.y][player.x] = 3
+    	}
+    	if(this.direction.right) {
+    		game.map1[player.y][player.x] = 0;
+    		this.x += 1;
+    		game.map1[player.y][player.x] = 3
+    	}
+    	if(this.direction.down) {
+    		game.map1[player.y][player.x] = 0;
+    		this.y += 1;
+    		game.map1[player.y][player.x] = 3
+    	}
+  	},
+  	setDirection(key) {
+    	if(key == 'w') this.direction.up = true;
+    	if(key == 'a') this.direction.left = true;
+    	if(key == 's') this.direction.down = true;
+    	if(key == 'd') this.direction.right = true;
+		console.log(this.direction)
+  	},
+  	unsetDirection(key) {
+    	if(key == 'w') this.direction.up = false;
+    	if(key == 'a') this.direction.left = false;
+    	if(key == 's') this.direction.down = false;
+    	if(key == 'd') this.direction.right = false;
+		console.log(this.direction)
+  		},
+	lose(){
 
+	},
+	win(){
+
+	}
 };
+
 class enemy{
 
 };
 
 
-// const game = {
-const map1 = [
+const game = {
+	map1: [
 		[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
 		[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
 		[1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
@@ -67,30 +128,51 @@ const map1 = [
 		[1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
 		[1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
 		[1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
-		[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-		[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-	]
-
-for (let y = 0; y < map1.length; y++) {
-	// const row = $('<div class="row"></div>');
-	// $('#lvl').append(row)
-	for (let x = 0; x < map1[y].length; x++) {
-		if (map1[y][x] === 0) {
-			$('#lvl').append('<div class="floor"></div>')
-		} else if (map1[y][x] === 1) {
-			$('#lvl').append('<div class="wall"></div>')
-		} else if (map1[y][x] === 3) {
-			$('#lvl').append('<div class="start"><div class="character"></div></div>')
+		[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+	],
+	makeMap(map){
+		for (let y = 0; y < map.length; y++) {
+		// const row = $('<div class="row"></div>');
+		// $('#lvl').append(row)
+			for (let x = 0; x < map[y].length; x++) {
+				if (map[y][x] === 0) {
+					$('#lvl').append('<div class="floor"></div>')
+				} else if (map[y][x] === 1) {
+					$('#lvl').append('<div class="wall"></div>')
+				} else if (map[y][x] === 3) {
+					$('#lvl').append('<div class="character"></div>')
+				}
+			}
 		}
-	}
+	},
+
 }
+function start(){
+	setInterval(function(){
+		player.move();
+		$('#lvl').empty()
+		game.makeMap(game.map1);
+	},100);
+};
 
+$('button').on('click', () => {
+	start()
+});
 
-
-
-
-
-
+$(document).keydown((e) => {
+	// console.log(e.key);
+	if(['w', 'a', 's', 'd'].includes(e.key)) {
+		player.setDirection(e.key)
+		// console.log('keypressed');
+	}
+})
+$(document).keyup((e) => {
+	if(['w', 'a', 's', 'd'].includes(e.key)) {
+		player.unsetDirection(e.key)
+		// console.log('keypressed');
+	}
+})
 
 
 
